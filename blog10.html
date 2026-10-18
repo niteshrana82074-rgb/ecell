@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog 10</title>
+    <style>
+        /* बेसिक रीसेट और लेआउट */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 10px;
+            /* मोबाइल पर किनारों से जगह छोड़ने के लिए */
+        }
+
+        .header {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #111;
+        }
+
+        .header img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* मुख्य 12 कंटेनरों का लेआउट */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* हर स्लाइडर कंटेनर की स्टाइलिंग (मोबाइल पर स्क्रीन के हिसाब से चौड़ाई बदलेगी) */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 350px;
+            /* मोबाइल और लैपटॉप दोनों के लिए परफेक्ट हाइट */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: #111;
+            /* ताकि फोटो न कटने पर साइड में अच्छा बैकग्राउंड दिखे */
+        }
+
+        /* स्लाइडर रैपर जो इमेज को एक लाइन में रखता है */
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* फोटो स्टाइलिंग - फोटो कभी नहीं कटेगी और पूरी दिखेगी */
+        .slider-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* फोटो को बिना काटे पूरा फिट करेगा */
+            background-color: #111;
+            /* खाली जगह पर डार्क बैकग्राउंड */
+            flex-shrink: 0;
+        }
+
+        /* Next / Prev बटन स्टाइलिंग */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        /* === मोबाइल स्क्रीन के लिए मीडिया क्वेरी (Media Query) === */
+        @media (max-width: 600px) {
+            .slider-container {
+                height: 250px;
+                /* छोटे फोन की स्क्रीन पर हाइट थोड़ी कम हो जाएगी ताकि सही दिखे */
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 6px 10px;
+            }
+        }
+
+        /* स्लाइडर का टाइटल स्टाइल */
+        .slide-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
+            /* टाइटल और स्लाइडर के बीच थोड़ी जगह */
+        }
+
+        /* स्लाइडर के ठीक नीचे छोटी डेट का स्टाइल */
+        /* स्लाइडर के नीचे वाली डेट को एकदम छोटा और हल्का दिखने के लिए */
+        .slide-date {
+            font-size: 11px;
+            /* फॉन्ट साइज को बहुत छोटा कर दिया गया है */
+            color: #888;
+            /* रंग को हल्का ग्रे (Grey) कर दिया गया है ताकि ज़्यादा चमके नहीं */
+            margin-top: 4px;
+            margin-bottom: 6px;
+            font-weight: normal;
+        }
+
+        .slide-title span {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        
+        <!-- ================= CONTAINER 10 ================= -->
+        <div class="slide-section">
+            <div class="slide-title"><span>Blog 10 : </span>Founder Success Story | Elon Musk </div>
+            <div class="slider-container">
+                <button class="btn prev-btn">&#10094;</button>
+                <button class="btn next-btn">&#10095;</button>
+                <div class="slider-wrapper">
+                    <img src="elon1.jpeg" alt="Photo 1">
+                    <img src="elon2.jpeg" alt="Photo 1">
+                    <img src="elon3.jpeg" alt="Photo 1">
+                    <img src="elon4.jpeg" alt="Photo 1">
+                    <img src="elon5.jpeg" alt="Photo 1">
+                    <img src="elon6.jpeg" alt="photo 1">
+                </div>
+            </div>
+            <div class="slide-date">
+                <span>Date : </span>02/Oct/2026
+            </div>
+            <div class="slide-discription">
+                <span>
+                    <ol>
+                        <li>
+                            Slide 1 (01/06):
+
+                            · Heading: FOUNDER SUCCESS STORY
+                            · Subject: ELON MUSK
+                            · Tagline: From bold ideas to building companies that changed industries.
+                            · Key Themes Listed: VISION, EXECUTION, PERSISTENCE
+                        </li>
+                        <li>
+                            Slide 2 (02/06): Early Beginnings
+
+                            · Heading: It Started With Curiosity.
+                            · Subject: 1995 • ZIP2
+                            · Content: An early internet company Musk co-founded with his brother. It was later acquired
+                            by
+                            Compaq in 1999.
+                            · Key Lesson: Curiosity → Action. Exploring technology can become the first step toward
+                            entrepreneurship.
+                        </li>
+                        <li>
+                            Slide 3 (03/06): One Venture Led To Another.
+                            · Timeline/Companies:
+                            · 01 X.COM: Co-founded in 1999 as an online financial-services company.
+                            · 02 PAYPAL: X.com became part of the company that became PayPal.
+                            · Milestone: 2002 - PAYPAL ACQUIRED BY EBAY
+
+                        </li>
+                        <li>
+                            Slide 4 (04/06): Changing the Auto Industry
+                            · Heading: Changing The Way We Think About Cars.
+                            · Subject: TESLA • 2008
+                            · Content: Musk became Tesla’s CEO in 2008. Tesla focused on electric vehicles and
+                            sustainable
+                            energy.
+                            · Key Pillars:
+                            · 01 ELECTRIC: Accelerating the transition toward electric vehicles.
+                            · 02 SUSTAINABLE: Technology with a broader sustainable-energy vision.
+                            · 03 EXECUTION: Innovation backed by products, manufacturing and scale.
+                        </li>
+                        <li>
+                            Slide 5 (05/06): What Can Entrepreneurs Learn?
+                            · Key Lessons:
+                            · 01 THINK BIG: Test an idea’s potential.
+                            · 02 SOLVE REAL PROBLEMS: Build around meaningful needs.
+                            · 03 LEARN FROM SETBACKS: Turn challenges into feedback.
+                            · 04 KEEP BUILDING: Long-term goals need consistency.
+                            · 05 QUESTION THE ORDINARY: Ask: can this be done differently?
+                        </li>
+                        <li>
+                            Slide 6 (06/06): Conclusion
+                            · Heading: BIG VISIONS START SMALL.
+                            · Content: Building something ambitious takes more than an idea. It takes curiosity,
+                            persistence,
+                            learning and execution.
+                        </li>
+                    </ol>
+                </span>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. सभी 12 स्लाइडर कंटेनरों को चुनें
+            const allSliders = document.querySelectorAll('.slider-container');
+
+            // 2. हर स्लाइडर कंटेनर के लिए अलग लॉजिक चालू करें
+            allSliders.forEach((container) => {
+                let currentIndex = 0;
+                let slideInterval;
+
+                const sliderWrapper = container.querySelector('.slider-wrapper');
+                const prevBtn = container.querySelector('.prev-btn');
+                const nextBtn = container.querySelector('.next-btn');
+                const totalImages = sliderWrapper.children.length; // खुद ही 10 फोटो गिन लेगा
+
+                // स्लाइडर की फोटो शिफ्ट करने का फ़ंक्शन
+                function updateSlider() {
+                    sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+
+                // Next स्लाइड पर जाने का फ़ंक्शन
+                function nextSlide() {
+                    currentIndex++;
+                    if (currentIndex >= totalImages) {
+                        currentIndex = 0; // आखिरी फोटो के बाद वापस पहली फोटो पर जाएं
+                    }
+                    updateSlider();
+                }
+
+                // Prev स्लाइड पर जाने का फ़ंक्शन
+                function prevSlide() {
+                    currentIndex--;
+                    if (currentIndex < 0) {
+                        currentIndex = totalImages - 1; // पहली फोटो के पीछे जाने पर 10वीं फोटो पर जाएं
+                    }
+                    updateSlider();
+                }
+
+                // Next बटन क्लिक इवेंट
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetTimer(); // बटन दबाने पर ऑटो-टाइमर रीसेट हो जाएगा
+                });
+
+                // Prev बटन क्लिक इवेंट
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetTimer(); // बटन दबाने पर ऑटो-टाइमर रीसेट हो जाएगा
+                });
+
+                // --- ऑटोमैटिक स्लाइडर (हर 3 सेकंड में बदलेगा, आप '3000' को बदल भी सकते हैं) ---
+                function startAutoSlide() {
+                    slideInterval = setInterval(nextSlide, 3000);
+                }
+
+                function stopAutoSlide() {
+                    clearInterval(slideInterval);
+                }
+
+                // जब यूजर माउस स्लाइडर के ऊपर रखे, तो ऑटो-चलना बंद हो जाए
+                container.addEventListener('mouseenter', stopAutoSlide);
+
+                // जब यूजर माउस हटाए, तो दोबारा ऑटो-चलना शुरू हो जाए
+                container.addEventListener('mouseleave', startAutoSlide);
+                // टाइमर रीसेट करने का फ़ंक्शन
+                function resetTimer() {
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+                // शुरुआत में ऑटो-स्लाइड चालू करें
+                startAutoSlide();
+            });
+        });
+        const allSliders = document.querySelectorAll('.slider-container');
+        allSliders.forEach((container) => {
+            const sliderWrapper = container.querySelector('.slider-wrapper');
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            // ... बाकी कोड वैसे ही रहेगा
+        });
+    </script>
+</body>
+
+</html>
